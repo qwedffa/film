@@ -1,0 +1,229 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+</head>
+<body>
+  <style>
+    .hero-bg {
+      background-size: cover;
+      background-position: center;
+    }
+    .movie-card {
+      transition: all 0.3s ease;
+    }
+    .movie-card:hover {
+      transform: scale(1.08);
+    }
+    .heart.liked {
+      color: #ef4444;
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body class="bg-zinc-950 text-white">
+
+  <!-- Навигация -->
+  <nav class="bg-black/95 backdrop-blur-md border-b border-zinc-800 fixed w-full z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-8">
+        <h1 button onclick="window.location.href='index.netflix.html'" class="text-3xl font-bold text-red-600 cursor-pointer">Netflix</h1>
+      </div>
+      
+      <div class="flex-1 max-w-xl mx-8">
+        <div class="relative">
+          <input type="text" id="searchInput" placeholder="Поиск по названию..."
+                 class="w-full bg-zinc-900 border border-zinc-700 rounded-full py-3 px-6 pl-12 focus:outline-none focus:border-red-600">
+          <i class="fas fa-search absolute left-5 top-3.5 text-gray-400"></i>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <button onclick="showFavorites()" class="flex items-center gap-2 hover:text-red-500 transition">
+          <i class="fas fa-heart text-xl"></i>
+          <span id="favCount" class="text-sm font-medium">0</span>
+        </button>
+        <button onclick="window.location.href='index.profile.html'" 
+                class="px-6 py-2 bg-red-600 hover:bg-red-700 rounded-full text-sm font-medium transition">
+          <i class="fas fa-user"></i>
+          <span>Профиль</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Большой герой-баннер -->
+  <section class="relative h-screen pt-16">
+    <div class="absolute inset-0 hero-bg" 
+         style="background-image: linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.3)), url('img/avengers.jpg');">
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-6 relative z-10 h-full flex items-center">
+      <div class="max-w-2xl">
+        <h1 class="text-7xl font-bold mb-4">AVENGERS: ENDGAME</h1>
+        <div class="flex items-center gap-6 text-xl mb-6">
+          <span class="text-green-400 font-medium">2019</span>
+          <span class="bg-zinc-800 px-3 py-1 rounded">16+</span>
+          <span>3ч 1м</span>
+          <div class="flex items-center gap-1">
+            <span class="text-yellow-400">★</span>
+            <span class="font-bold">8.4</span>
+          </div>
+        </div>
+        
+        <p class="text-xl text-gray-200 mb-8 leading-relaxed">
+          После событий «Войны бесконечности» оставшиеся в живых члены команды Мстителей объединяются, чтобы дать отпор Таносу. 
+          Самое грандиозное приключение в истории Marvel.
+        </p>
+
+        <div class="flex gap-4">
+          <button onclick="alert('Начинаем просмотр Avengers: Endgame... 🔥')" 
+                  class="bg-red-600 hover:bg-red-700 px-10 py-4 rounded-full text-xl font-medium flex items-center gap-3 transition">
+            <i class="fas fa-play"></i> Смотреть
+          </button>
+        
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-7xl mx-auto px-6 py-12">
+    <!-- Вкладки -->
+    <div class="flex gap-8 border-b border-zinc-800 mb-10">
+      <button onclick="showTab(this, 'overview')" class="tab-button active pb-4 text-lg font-medium border-b-2 border-red-600">Обзор</button>
+      <button onclick="showTab(this, 'cast')" class="tab-button pb-4 text-lg font-medium hover:text-gray-300">В ролях</button>
+      <button onclick="showTab(this, 'details')" class="tab-button pb-4 text-lg font-medium hover:text-gray-300">Детали</button>
+    </div>
+
+    <!-- Обзор -->
+    <div id="overview" class="tab-content">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2">
+          <h3 class="text-2xl font-semibold mb-4">О фильме</h3>
+          <p class="text-gray-300 leading-relaxed text-lg">
+            После уничтожающего щелчка Таноса, половина живых существ во Вселенной исчезла. 
+            Оставшиеся Мстители должны найти способ вернуть всё как было и победить безумного титана.
+          </p>
+          <div class="mt-8">
+            <h4 class="font-medium mb-3">Жанры</h4>
+            <div class="flex flex-wrap gap-3">
+              <span class="bg-zinc-900 px-5 py-2 rounded-full">Боевик</span>
+              <span class="bg-zinc-900 px-5 py-2 rounded-full">Фантастика</span>
+              <span class="bg-zinc-900 px-5 py-2 rounded-full">Приключения</span>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="font-medium mb-4">Детали</h4>
+          <ul class="space-y-4 text-gray-400">
+            <li><span class="text-white">Режиссёры:</span> Энтони Руссо, Джо Руссо</li>
+            <li><span class="text-white">Сценарий:</span> Кристофер Маркус, Стивен Макфили</li>
+            <li><span class="text-white">В главных ролях:</span> Роберт Дауни мл., Крис Эванс, Марк Руффало</li>
+            <li><span class="text-white">Сборы в мире:</span> $2.798 млрд</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- В ролях -->
+    <div id="cast" class="tab-content hidden">
+      <h3 class="text-2xl font-semibold mb-8">В главных ролях</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+        <div class="text-center">
+          <img src="img/actors/Robertjr.webp" class="w-40 h-40 mx-auto rounded-full object-cover mb-4" alt="">
+          <p class="font-medium">Роберт Дауни мл.</p>
+          <p class="text-sm text-gray-400">Тони Старк / Железный человек</p>
+        </div>
+        <div class="text-center">
+          <img src="img/actors/Cris.webp" class="w-40 h-40 mx-auto rounded-full object-cover mb-4" alt="">
+          <p class="font-medium">Крис Эванс</p>
+          <p class="text-sm text-gray-400">Стив Роджерс / Капитан Америка</p>
+        </div>
+        <div class="text-center">
+          <img src="img/actors/Mark.webp" class="w-40 h-40 mx-auto rounded-full object-cover mb-4" alt="">
+          <p class="font-medium">Марк Руффало</p>
+          <p class="text-sm text-gray-400">Брюс Бэннер / Халк</p>
+        </div>
+        <div class="text-center">
+          <img src="img/actors/Scarlet.webp" class="w-40 h-40 mx-auto rounded-full object-cover mb-4" alt="">
+          <p class="font-medium">Скарлетт Йоханссон</p>
+          <p class="text-sm text-gray-400">Наташа Романова / Чёрная вдова</p>
+        </div>
+        <div class="text-center">
+          <img src="img/actors/Hemsfort.webp" class="w-40 h-40 mx-auto rounded-full object-cover mb-4" alt="">
+          <p class="font-medium">Крис Хемсворт</p>
+          <p class="text-sm text-gray-400">Тор</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Детали -->
+    <div id="details" class="tab-content hidden">
+      <h3 class="text-2xl font-semibold mb-6">Дополнительная информация</h3>
+      <div class="bg-zinc-900 rounded-2xl p-8 max-w-2xl">
+        <p class="text-gray-300">Самый кассовый фильм в истории на момент выхода. Финал Саги Бесконечности Marvel Cinematic Universe.</p>
+      </div>
+    </div>
+
+    <!-- Похожие фильмы -->
+    <div class="mt-16">
+      <h3 class="text-2xl font-semibold mb-8">Похожие фильмы</h3>
+      <div id="similarGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6"></div>
+    </div>
+  </main>
+
+  <script>
+    const similar = [
+      { title: "Avengers: Infinity War", img: "img/avengers.jpg", rating: 8.4 },
+      { title: "Spider-Man: No Way Home", img: "img/spider.jpg", rating: 8.3 },
+      { title: "The Boys", img: "img/theboys.png", rating: 8.7 },
+      { title: "John Wick: Chapter 4", img: "img/johnwick.jpg", rating: 7.7 },
+      { title: "Reacher", img: "img/reacher.jpg", rating: 8.1 },
+    ];
+
+    function renderSimilar() {
+      const container = document.getElementById('similarGrid');
+      container.innerHTML = '';
+      similar.forEach(item => {
+        const card = `
+          <div class="movie-card cursor-pointer group relative">
+            <div class="relative rounded-xl overflow-hidden">
+              <img src="${item.img}" class="w-full aspect-[2/3] object-cover group-hover:scale-105 transition" alt="${item.title}">
+            </div>
+            <p class="mt-3 font-medium">${item.title}</p>
+            <p class="text-sm text-gray-400">${item.rating} ★</p>
+          </div>
+        `;
+        container.innerHTML += card;
+      });
+    }
+
+    function showTab(tab, tabId) {
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+      document.getElementById(tabId).classList.remove('hidden');
+
+      document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.classList.remove('active', 'border-b-2', 'border-red-600');
+      });
+      tab.classList.add('active', 'border-b-2', 'border-red-600');
+    }
+
+    function toggleFavorite(id) {
+      alert(`Avengers: Endgame добавлен в избранное ❤️`);
+    }
+
+    function showFavorites() {
+      alert("Переход в избранное");
+    }
+
+    window.onload = () => {
+      renderSimilar();
+      document.getElementById('favCount').textContent = "5";
+    };
+  </script>
+    
+</body>
+</html>
